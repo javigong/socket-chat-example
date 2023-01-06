@@ -16,7 +16,11 @@ io.on("connection", (socket) => {
   // Each socket also fires a special disconnect event that you can listen on and act upon.
   socket.on("disconnect", () => {
     console.log("user disconnected");
-  })
+  });
+
+  socket.on("chat message", (msg) => {
+    io.emit("chat message", msg);
+  });
 });
 
 server.listen(3000, () => {
